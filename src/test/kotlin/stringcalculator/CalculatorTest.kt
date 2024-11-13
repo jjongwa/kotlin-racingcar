@@ -7,7 +7,7 @@ import io.kotest.matchers.shouldBe
 class CalculatorTest : StringSpec({
     "계산할 수식을 하나의 문자열로 받을 수 있다." {
         val input = "2+3*4/2"
-        val calculator = Calculator(input)
+        Calculator(input)
     }
 
     "입력값이 null or 빈 공백 문자가 될 수 없다." {

@@ -1,25 +1,30 @@
 package stringcalculator
 
-class Calculator(input: String) {
+class Calculator(input: String?) {
     private val numbers: List<Number>
     private val operators: List<Operator>
 
     init {
         validateNotBlankInput(input)
-        val elements = splitByRegex(input)
+        val elements = splitByRegex(input!!)
         validateNoConsecutiveOperators(elements)
 
         operators =
             elements.filter { it in "+-*/" }
                 .map { Operator.from(it.single()) }
+
         numbers =
             elements.filter { it !in "+-*/" }
-                .map { Number(it.toDouble()) }
-        sad(numbers, operators)
+                .map {
+                    validateNumericValue(it)
+                    Number(it.toDouble())
+                }
+
+        checkFormulaOrder(numbers, operators)
     }
 
-    private fun validateNotBlankInput(input: String) {
-        require(input.isNotBlank()) { "입력 문자열이 비어 있거나 공백입니다." }
+    private fun validateNotBlankInput(input: String?) {
+        require(!input.isNullOrBlank()) { "입력 문자열이 비어 있거나 공백입니다." }
     }
 
     private fun validateNoConsecutiveOperators(elements: List<String>) {
@@ -28,7 +33,7 @@ class Calculator(input: String) {
         }
     }
 
-    private fun sad(
+    private fun checkFormulaOrder(
         numbers: List<Number>,
         operators: List<Operator>,
     ) {
@@ -39,6 +44,10 @@ class Calculator(input: String) {
         val cleanedInput = input.replace("\\s".toRegex(), "")
         val regex = "(?<=[-+*/])|(?=[-+*/])".toRegex()
         return regex.split(cleanedInput).filter { it.isNotEmpty() }
+    }
+
+    private fun validateNumericValue(value: String) {
+        require(value.toDoubleOrNull() != null) { "숫자와 사칙 연산 이외의 문자는 입력할 수 없습니다." }
     }
 
     fun calculate(): String {

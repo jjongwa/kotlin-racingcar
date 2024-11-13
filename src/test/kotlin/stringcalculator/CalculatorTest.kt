@@ -11,8 +11,14 @@ class CalculatorTest : StringSpec({
     }
 
     "입력값이 null or 빈 공백 문자가 될 수 없다." {
+        assertThrowsForInvalidInput(null)
         assertThrowsForInvalidInput("")
         assertThrowsForInvalidInput(" ")
+    }
+
+    "숫자와 사칙 연산 이외의 문자는 입력할 수 없다." {
+        assertThrowsForInvalidString("2+3*4/2^")
+        assertThrowsForInvalidString("10%2*3/7")
     }
 
     "숫자 연산자 숫자 순으로 입력되어야 한다." {
@@ -34,12 +40,20 @@ class CalculatorTest : StringSpec({
     }
 })
 
-private fun assertThrowsForInvalidInput(input: String) {
+private fun assertThrowsForInvalidInput(input: String?) {
     val exception =
         shouldThrowExactly<IllegalArgumentException> {
             Calculator(input)
         }
     exception.message shouldBe "입력 문자열이 비어 있거나 공백입니다."
+}
+
+private fun assertThrowsForInvalidString(input: String) {
+    val exception =
+        shouldThrowExactly<IllegalArgumentException> {
+            Calculator(input)
+        }
+    exception.message shouldBe "숫자와 사칙 연산 이외의 문자는 입력할 수 없습니다."
 }
 
 private fun assertThrowsForInvalidOrder(input: String) {

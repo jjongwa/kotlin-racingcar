@@ -16,7 +16,7 @@ class Number(value: Double) {
         return Number(this.amount + value.amount)
     }
 
-    fun minus(value: Number): Number {
+    fun subtract(value: Number): Number {
         return Number(this.amount - value.amount)
     }
 

@@ -11,4 +11,21 @@ class Number(value: Double) {
     private fun validateRange(amount: Double) = (amount < -1_0000_0000 || amount > 1_0000_0000)
 
     private fun roundToOneDecimalPlace(amount: Double) = String.format("%.1f", amount).toDouble()
+
+    fun plus(value: Number): Number {
+        return Number(this.amount + value.amount)
+    }
+
+    fun minus(value: Number): Number {
+        return Number(this.amount - value.amount)
+    }
+
+    fun multiply(value: Number): Number {
+        return Number(this.amount * value.amount)
+    }
+
+    fun divide(value: Number): Number {
+        require(value.amount != 0.0) { "0으로 나눌 수 없습니다." }
+        return Number(this.amount / value.amount)
+    }
 }

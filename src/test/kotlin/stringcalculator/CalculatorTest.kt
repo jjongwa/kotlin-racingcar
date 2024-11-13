@@ -26,6 +26,12 @@ class CalculatorTest : StringSpec({
         assertThrowsOnConsecutiveOperators("56//78")
         assertThrowsOnConsecutiveOperators("2+3/4**5")
     }
+
+    "분리된 숫자와 연산자를 통해 계산을 수행할 수 있다." {
+        doCalculate("2+3*4/2") shouldBe "10.0"
+        doCalculate("4/3*5+2") shouldBe "8.5"
+        doCalculate("10*10*100*100") shouldBe "1000000.0"
+    }
 })
 
 private fun assertThrowsForInvalidInput(input: String) {
@@ -50,4 +56,9 @@ private fun assertThrowsOnConsecutiveOperators(input: String) {
             Calculator(input)
         }
     exception.message shouldBe "두 개 이상의 연산자가 연속해서 나타날 수 없습니다."
+}
+
+private fun doCalculate(input: String): String {
+    val calculator = Calculator(input)
+    return calculator.calculate()
 }

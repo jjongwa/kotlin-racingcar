@@ -40,4 +40,10 @@ class Calculator(input: String) {
         val regex = "(?<=[-+*/])|(?=[-+*/])".toRegex()
         return regex.split(cleanedInput).filter { it.isNotEmpty() }
     }
+
+    fun calculate(): String {
+        return operators.foldIndexed(numbers.first()) { index, intermediateResult, operator ->
+            operator.apply(intermediateResult, numbers[index + 1])
+        }.amount.toString()
+    }
 }

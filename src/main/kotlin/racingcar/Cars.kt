@@ -1,16 +1,9 @@
 package racingcar
 
 class Cars(private val cars: List<Car>) {
-    fun move(numberGenerator: NumberGenerator): Cars {
-        return Cars(
-            cars.map { _ ->
-                return Cars(
-                    cars.map { car ->
-                        car.takeIf { moveCondition(numberGenerator) }?.move() ?: car
-                    },
-                )
-            },
-        )
+    fun move(numberGenerator: NumberGenerator) {
+        cars.filter { moveCondition(numberGenerator) }
+            .forEach { it.move() }
     }
 
     private fun moveCondition(numberGenerator: NumberGenerator): Boolean {

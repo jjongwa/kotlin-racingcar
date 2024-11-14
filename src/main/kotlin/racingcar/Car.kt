@@ -1,8 +1,8 @@
 package racingcar
 
-class Car(private val position: CarPosition) {
-    fun move(): Car {
-        return Car(position.advance())
+class Car(private var position: CarPosition) {
+    fun move() {
+        position = position.advance()
     }
 
     fun getPositionValue(): Int {

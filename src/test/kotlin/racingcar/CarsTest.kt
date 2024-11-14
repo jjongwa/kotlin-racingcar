@@ -24,8 +24,8 @@ class CarsTest : StringSpec({
                         Car(CarPosition(0)),
                     ),
                 )
-            val afterCars = cars.move(CustomNumberGenerator(mutableListOf(valueA, valueB)))
-            afterCars.getPositionValues() shouldBe listOf(afterA, afterB)
+            cars.move(CustomNumberGenerator(mutableListOf(valueA, valueB)))
+            cars.getPositionValues() shouldBe listOf(afterA, afterB)
         }
     }
 

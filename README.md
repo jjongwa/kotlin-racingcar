@@ -48,9 +48,9 @@
 ### 기능 구현 목록
 
 - 자동차 (Car)
-    - [ ] 전진 또는 멈출 수 있다.
-        - [ ] 위치 (CarPosition)를 가진다.
-        - [ ] 전진하는 경우 위치 (CarPosition)의 값이 1 증가한다.
+    - [x] 전진 또는 멈출 수 있다.
+        - [x] 위치 (CarPosition)를 가진다.
+        - [x] 전진하는 경우 위치 (CarPosition)의 값이 1 증가한다.
 
 
 - 숫자 생성기 (NumberGenerator)

@@ -1,8 +1,8 @@
 package racingcar
 
 class RacingGame(
-    private val inputCarSize: Int,
-    private val inputRoundCount: Int,
+    inputCarSize: Int,
+    inputRoundCount: Int,
     private val numberGenerator: NumberGenerator,
 ) {
     private val cars: Cars = Cars.makeNewCars(inputCarSize)

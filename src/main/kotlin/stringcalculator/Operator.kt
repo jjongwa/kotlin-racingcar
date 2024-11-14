@@ -11,19 +11,19 @@ enum class Operator(val symbol: Char) {
         override fun apply(
             x: Number,
             y: Number,
-        ): Number = x.subtract(y)
+        ): Number = x.minus(y)
     },
     MULTIPLY('*') {
         override fun apply(
             x: Number,
             y: Number,
-        ): Number = x.multiply(y)
+        ): Number = x.times(y)
     },
     DIVIDE('/') {
         override fun apply(
             x: Number,
             y: Number,
-        ): Number = x.divide(y)
+        ): Number = x.div(y)
     }, ;
 
     abstract fun apply(

@@ -12,19 +12,19 @@ class Number(value: Double) {
 
     private fun roundToOneDecimalPlace(amount: Double) = String.format("%.1f", amount).toDouble()
 
-    fun plus(value: Number): Number {
+    operator fun plus(value: Number): Number {
         return Number(this.amount + value.amount)
     }
 
-    fun subtract(value: Number): Number {
+    operator fun minus(value: Number): Number {
         return Number(this.amount - value.amount)
     }
 
-    fun multiply(value: Number): Number {
+    operator fun times(value: Number): Number {
         return Number(this.amount * value.amount)
     }
 
-    fun divide(value: Number): Number {
+    operator fun div(value: Number): Number {
         require(value.amount != 0.0) { "0으로 나눌 수 없습니다." }
         return Number(this.amount / value.amount)
     }

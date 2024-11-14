@@ -10,8 +10,7 @@ class CalculatorTest : StringSpec({
         Calculator(input)
     }
 
-    "입력값이 null or 빈 공백 문자가 될 수 없다." {
-        assertThrowsForInvalidInput(null)
+    "입력값은 빈 공백 문자가 될 수 없다." {
         assertThrowsForInvalidInput("")
         assertThrowsForInvalidInput(" ")
     }
@@ -40,7 +39,7 @@ class CalculatorTest : StringSpec({
     }
 })
 
-private fun assertThrowsForInvalidInput(input: String?) {
+private fun assertThrowsForInvalidInput(input: String) {
     val exception =
         shouldThrowExactly<IllegalArgumentException> {
             Calculator(input)

@@ -1,12 +1,12 @@
 package stringcalculator
 
-class Calculator(input: String?) {
+class Calculator(input: String) {
     private val numbers: List<Number>
     private val operators: List<Operator>
 
     init {
         validateNotBlankInput(input)
-        val elements = splitByRegex(input!!)
+        val elements = splitByRegex(input)
         validateNoConsecutiveOperators(elements)
 
         operators =
